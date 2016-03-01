@@ -24,6 +24,7 @@ int main(int argc, char* argv[])
         {
                 threads = omp_get_num_threads();
         }
+        printf("Process %d here: Reporting number of threads as %d\n", processID, threads);
 
         if (processID == 0) { // Master 
                 printf("Master process, ready to start! Processes = %d\n", processes);
