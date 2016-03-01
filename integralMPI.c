@@ -53,7 +53,7 @@ int main(int argc, char* argv[])
                 double temp;
                 int i;
                 int start = (processID - 1) * size / (processes - 1);
-                int end = (processID == processes - 1) ? (size) : (processID * (processes - 1) / size);
+                int end = (processID == processes - 1) ? (size) : (processID * size / (processes - 1));
                 printf("Slave %d out of %d processes: for-loop from %d to %d\n", processID, processes, start, end);
                 before = omp_get_wtime();
                 #pragma omp parallel for shared(size) private(start, end) reduction(+:area)
