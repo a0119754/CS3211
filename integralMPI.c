@@ -37,7 +37,7 @@ int main(int argc, char* argv[])
                 #pragma omp parallel for shared(processes) private(slave, temp, slaveTag, status) reduction(+:area)
                 for (slave = 1; slave < processes; slave++) {
                         printf("Master process, waiting for data from slave %d\n", slave);
-                        MPI_Recv(&temp, 1, MPI_DOUBLE, slave, slaveTag, MPI_COMM_WORLD, &status);
+                        MPI_Recv(&temp, 1, MPI_DOUBLE, slave, slave /*slaveTag*/ /*WHAT IS TAG???*/, MPI_COMM_WORLD, &status);
                         printf("Master process, received temp %.6f from slave %d\n", temp, slave);
                         area += temp;
                         printf("Master process, added temp slave %d\n", temp, slave);
