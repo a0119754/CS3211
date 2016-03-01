@@ -52,7 +52,7 @@ int main(int argc, char* argv[])
                 double area = 0;
                 double temp;
                 int i;
-                int start = (processID - 1) * (processes - 1)  / size;
+                int start = (processID - 1) * size / (processes - 1);
                 int end = (processID == processes - 1) ? (size) : (processID * (processes - 1) / size);
                 printf("Slave %d out of %d processes: for-loop from %d to %d\n", processID, processes, start, end);
                 before = omp_get_wtime();
